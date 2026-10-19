@@ -1,23 +1,17 @@
 """
 Class Support
 represents support tickets.
-Reads a csv file
-added features:
-Låt användaren ändra status på en instans
+Reads a csv file and creates a list of tickets directly.
+class method to change status added.
 
-Programmet ska:
-1. Innehålla klassen som ni har utformat.
-2. Öppna och läsa CSV-filen.
-3. Skapa en instans av klassen för varje rad.
-4. Lagra instanserna i en lista eller annan lämplig samling.
-5. Använda klassens metod.
-6. Visa information från de skapade instanserna.
+Visa endast ärenden med en viss status, kategori eller prioritet.
 """
 
 import csv
 support_tickets = []
 
 def load_csv():
+    """reads csv file and makes each row into a support_ticket"""
     with open("supportarenden.csv", "r", newline="", encoding="utf-8") as file:
         reader = csv.reader(file)
         next(reader) # hoppar över första rubrikraden
@@ -32,7 +26,7 @@ def load_csv():
 
 
 class Support:
-    
+    """support class, represents a support ticket"""
     def __init__(self, ticket: str, customer: str, category: str, priority: str, status: str):
         self.ticket = ticket
         self.customer = customer
@@ -48,6 +42,7 @@ class Support:
 
     @classmethod
     def update_status(self, new_status: str, input_from_user):
+        """ updates the status varible if found"""
         for support_ticket in support_tickets:
             if support_ticket.ticket == input_from_user:
                 print(support_ticket)
@@ -55,8 +50,17 @@ class Support:
                 return support_ticket
         print("Ärende hittas ej!")
         return None
-            
 
+    @classmethod 
+    def show_status(self, input_from_user):
+        """ prints object in loop if status is correct"""
+        found = False
+        for support_ticket in support_tickets:
+            if support_ticket.status == input_from_user:
+                print(support_ticket)
+                found = True
+        if not found:
+            print(f"Inga ärenden med status: {input_from_user} ")
 
 
 
@@ -65,4 +69,6 @@ print(support_tickets)
 ticket_number = input("Vilket ärendenummer vill du ändra?")
 new_status = input("Vad är ärendets nya status?")
 print(Support.update_status(new_status, ticket_number))
+status = input("Välj status för att visa alla ärenden:")
+Support.show_status(status)
 
