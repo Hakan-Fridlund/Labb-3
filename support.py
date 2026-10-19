@@ -4,7 +4,6 @@ represents a support ticket.
 Reads a csv file and creates a list of tickets directly.
 class method to change status added via ticket number.
 class method to show list of objects with status filtering.
-Visa endast ärenden med en viss status, kategori eller prioritet.
 suggested features:
 * add a method that checks if a ticket is still active.
 • Save simple information from objets as json. Do not save objects themselves.
