@@ -1,9 +1,9 @@
 """
 Class Support
-represents support tickets.
+represents a support ticket.
 Reads a csv file and creates a list of tickets directly.
-class method to change status added.
-
+class method to change status added via ticket number.
+class method to show list of objects with status filtering.
 Visa endast ärenden med en viss status, kategori eller prioritet.
 """
 
@@ -60,7 +60,7 @@ class Support:
                 print(support_ticket)
                 found = True
         if not found:
-            print(f"Inga ärenden med status: {input_from_user} ")
+            print(f"Inga ärenden med status: {input_from_user}")
 
 
 
