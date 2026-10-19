@@ -40,7 +40,7 @@ class Support:
     def __repr__(self):
         return f"Ärende-id: {self.ticket}, kund: {self.customer}, kategori: {self.category}, prioritet: {self.priority}, status: {self.status}\n"
 
-    @classmethod
+    @classmethod #lets us use this class method without creating a object of the class
     def update_status(self, new_status: str, input_from_user):
         """ updates the status varible if found"""
         for support_ticket in support_tickets:
@@ -51,7 +51,7 @@ class Support:
         print("Ärende hittas ej!")
         return None
 
-    @classmethod 
+    @classmethod #lets us use this class method without creating a object of the class
     def show_status(self, input_from_user):
         """ prints object in loop if status is correct"""
         found = False
@@ -71,4 +71,3 @@ new_status = input("Vad är ärendets nya status?")
 print(Support.update_status(new_status, ticket_number))
 status = input("Välj status för att visa alla ärenden:")
 Support.show_status(status)
-
